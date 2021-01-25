@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -21,6 +24,7 @@ void InsertToTree(Node*& pRoot, Node* pNew)
 
 	if (pNew->i <= pRoot->i)
 		InsertToTree(pRoot->pLeft, pNew);
+
 	else
 		InsertToTree(pRoot->pRight, pNew);
 }
@@ -36,24 +40,22 @@ void PrintTree(Node* pRoot, int Level)
 
 	for (int i = 0; i < Level; i++)
 		cout << "  ";
+
 	cout << pRoot->i << endl;
 
 	PrintTree(pRoot->pLeft, Level + 1);
 }
 
-void Insert(Node*& pRoot, Node* pNewNode)
-{
-	if (!pRoot)
-		pRoot = pNewNode;
-	else
-	{
-		if (pNewNode->i < pRoot->i)
-			Insert(pRoot->pLeft, pNewNode);
-		else
-			Insert(pRoot->pRight, pNewNode);
-	}
-}
+int LargestSumOfNodes(Node* pRoot, vector<Node*> branch) {
+	if (pRoot == nullptr)
+		return 0;
 
+	int sum = pRoot->i;
+
+
+
+	return sum;
+}
 
 void main()
 {
