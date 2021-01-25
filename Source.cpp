@@ -46,7 +46,7 @@ void PrintTree(Node* pRoot, int Level)
 	PrintTree(pRoot->pLeft, Level + 1);
 }
 
-int LargestSumOfNodes(Node* pRoot, vector<Node*> branch) {
+int LargestSumOfNodes(Node* pRoot, vector<Node*>& branch) {
 	if (pRoot == nullptr)
 		return 0;
 
@@ -55,6 +55,20 @@ int LargestSumOfNodes(Node* pRoot, vector<Node*> branch) {
 
 
 	return sum;
+}
+
+void PrintBranchAndSum(Node* pRoot) {
+
+	vector<Node*> branch;
+	
+	int largestSum = LargestSumOfNodes(pRoot, branch);
+
+	cout << "Branch with the largest sum is: ";
+
+	for (int j = 0; j < branch.size(); j++)
+		cout << branch[j]->i << " ";
+	cout << "-> SUM = " << largestSum;
+
 }
 
 void main()
@@ -74,4 +88,6 @@ void main()
 	}
 
 	PrintTree(pRoot, 1);
+
+	PrintBranchAndSum(pRoot);
 }
