@@ -50,8 +50,24 @@ int LargestSumOfNodes(Node* pRoot, vector<Node*>& branch) {
 	if (pRoot == nullptr)
 		return 0;
 
+	branch.push_back(pRoot);
+
 	int sum = pRoot->i;
 
+	if (pRoot->pLeft != nullptr && pRoot->pRight != nullptr) {
+
+		int leftSum = LargestSumOfNodes(pRoot->pLeft, branch);
+		int rightSum = LargestSumOfNodes(pRoot->pRight, branch);
+		
+		if(leftSum > rightSum)
+			sum += leftSum;
+		else
+			sum += rightSum;
+	}
+	else if (pRoot->pLeft != nullptr)
+		sum += LargestSumOfNodes(pRoot->pLeft, branch);
+	else if (pRoot->pRight != nullptr)
+		sum += LargestSumOfNodes(pRoot->pRight, branch);
 
 
 	return sum;
